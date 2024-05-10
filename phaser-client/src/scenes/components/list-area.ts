@@ -51,7 +51,7 @@ export class ListArea
   {
     const size = this.udids.size;
     let hasSameName = false;
-    if (size > 1) {       
+    if (size > 0) {       
       for (let index = 0; index < size; index++) {
         const element = this.udTexts[index];  
         if (index < size-1) {

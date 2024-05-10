@@ -12,11 +12,9 @@ export class Lobby
 
   public addUser(user: User)
   {
-
-    if (this.checkSameName(user)) 
-    {this.broadcast((playerId, player) => player.sendDupEnterUser(user));}
-    else this.broadcast((playerId, player) => player.sendEnterUser(user));    
-
+    //if (this.checkSameName(user)) 
+    this.users.forEach((otherPlayer) => {user.sendEnterUser(otherPlayer);});
+    this.broadcast((playerId, player) => player.sendEnterUser(user));    
     this.users.set(user.getUserId(), user);
     this.checkUser();
   }
@@ -63,6 +61,7 @@ export class Lobby
       player.sendChat(sender.getUserId(), sender.getUserData().displayName, message)
     });
   }
+  
   //broadcast player leave
   public leaveNotice(sender: User)
   {
