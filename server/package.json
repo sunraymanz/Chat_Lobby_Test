@@ -1,0 +1,26 @@
+{
+  "name": "job-application",
+  "version": "1.0.0",
+  "description": "Debuz Job Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm app/main.js",
+    "main": "ts-node ./src/main.ts",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
+  },
+  "author": "Teerawat Pitayaporn",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.33",
+    "@types/ws": "^8.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.15.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  }
+}
