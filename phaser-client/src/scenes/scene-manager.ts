@@ -45,6 +45,13 @@ export class SceneManager
     this.chatScene?.chat(senderId, sender, chat);
   }
 
+  public async addPrivateChat(receiverId: number,senderId: number, sender: string, chat: string)
+  {
+    if (receiverId == this.chatScene?.getUser(0)?.userId) {
+      this.chatScene?.chat(senderId, sender, chat);
+    }
+  }
+
   public async addUser(userId: number, displayName: string)
   {
     this.chatScene?.addUser(userId, displayName);

@@ -84,6 +84,9 @@ export class ChatScene extends Phaser.Scene
     this.listArea.refreshUser(this.myName,{ userId, displayName }); 
   }
 
+  public getUser(userId : number)
+  { return this.users.get(userId)}
+
   public removeUser(userId: number)
   {
     console.log("removeUser", userId);

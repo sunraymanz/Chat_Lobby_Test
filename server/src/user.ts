@@ -74,12 +74,6 @@ export class User
     sendEnterUser(this.remote, user.getUserId(), user.getDisplayName());
   }
 
-  public sendDupEnterUser(user: User)
-  {
-    //sendEnterUser(this.remote, user.getUserId(), user.getDisplayName()+"["+user.getUserId()+"]");
-    sendEnterUser(this.remote, user.getUserId(), user.getDisplayName());
-  }
-
   public sendRemoveUser(user: User)
   {
     sendRemoveUser(this.remote, user.getUserId())
@@ -97,12 +91,13 @@ export class User
 
   public doPrivateChat(receiverId: number, message: string)
   {
-    const receiver = this.lobby.getUser(receiverId);
+    this.lobby.privateChat(receiverId,this, message);
+    /*const receiver = this.lobby.getUser(receiverId);
     if (receiver) {
         receiver.sendChat(this.getUserId(), this.getDisplayName(), message);
     } else {
         console.log("Receiver not found");
-    }
+    }*/
   }
 
   public close()

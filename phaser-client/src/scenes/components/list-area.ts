@@ -47,6 +47,7 @@ export class ListArea
     }
   }
 
+  //refresh name if it has duplicate
   public refreshUser(userName: string,newUd: UserData)
   {
     const size = this.udids.size;

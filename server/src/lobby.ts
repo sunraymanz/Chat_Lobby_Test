@@ -12,7 +12,6 @@ export class Lobby
 
   public addUser(user: User)
   {
-    //if (this.checkSameName(user)) 
     this.users.forEach((otherPlayer) => {user.sendEnterUser(otherPlayer);});
     this.broadcast((playerId, player) => player.sendEnterUser(user));    
     this.users.set(user.getUserId(), user);
@@ -23,24 +22,6 @@ export class Lobby
   {
     console.log("=== People In Lobby ===");
     this.users.forEach((Map) => {console.log("ID : "+ Map.getUserId() +" is "+ Map.getDisplayName())});
-  }
-
-  //check if there are player with same name already in lobby
-  public checkSameName(user: User) : boolean 
-  {
-    let found = false;
-    this.users.forEach((otherPlayer) => 
-    {
-      //get other player info to show lobby list
-      if (otherPlayer.getDisplayName() == user.getDisplayName()) 
-        {
-          user.sendDupEnterUser(otherPlayer);
-          console.log("same name");
-          found = true;
-        }
-      else { user.sendEnterUser(otherPlayer);} 
-    });
-    return found;
   }
 
   public removeUser(user: User)
@@ -59,6 +40,15 @@ export class Lobby
   {
     this.broadcast((playerId, player) => {
       player.sendChat(sender.getUserId(), sender.getUserData().displayName, message)
+    });
+  }
+
+  public privateChat(receiverId: number,sender: User, message: string)
+  {
+    this.broadcast((playerId, player) => {
+      if (receiverId == player.getUserId()) {     
+        player.sendChat(sender.getUserId(), sender.getUserData().displayName, message)
+      }
     });
   }
   
